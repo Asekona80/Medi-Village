@@ -13,12 +13,17 @@ function Login() {
         e.preventDefault();
         axios.post('http://localhost:3001/login', { email, password })
             .then(result => {
-                console.log(result);
-                if (result.data === "Success") {
-                    navigate('/home');
+                console.log("Login result:", result);  
+                if (result.data && result.data.status === "Success") {
+                    console.log("Redirecting to home...");  
+                    navigate('/home');  
+                } else {
+                    console.log("Login failed:", result.data.message || "Unknown error");
                 }
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log("Login error:", err);  // Log any errors
+            });
     };
 
     return (
@@ -32,10 +37,10 @@ function Login() {
             }}
         >
             <div className="p-3 rounded w-25" style={{
-                backgroundColor: "transparent",  // Set form background to transparent
-                position: "relative",  // Float the form
+                backgroundColor: "transparent",  
+                position: "relative",  
                 zIndex: 1,  
-                boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)"  // Add shadow for floating effect
+                boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)"  
             }}>
                 <h2 className="text-black">Login</h2>
                 <form onSubmit={handleSubmit}>

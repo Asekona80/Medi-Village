@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import medicalImage from './assets/medi-pic.jpg';  // Importing the image
+import medicalImage from './assets/medi-pic.jpg'; 
 
 function Signup() {
     const [name, setName] = useState();

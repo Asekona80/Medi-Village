@@ -2,6 +2,9 @@ const express = require("express")
 const mongoose = require('mongoose')
 const cors =require("cors")
 const ClinicModel = require('./models/Clinic')
+const AppModel = require('./models/Appointment')
+const AppointmentModel = require("./models/Appointment")
+
 
 const app = express()
 app.use(express.json())
@@ -32,6 +35,10 @@ app.post('/register', (req, res) => {
     .catch(err => res.json(err))
 
 })
+app.post('/appointment', (req, res) => {
+    AppointmentModel.create(re)
+
+}) 
 
 
 app.listen(3001, () => {
